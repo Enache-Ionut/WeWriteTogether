@@ -16,7 +16,7 @@ namespace WeWriteTogether.Data
       base.OnModelCreating(builder);
       string schema = "AspNetIdentity";
 
-      builder.Entity<IdentityUser>(entity =>
+      builder.Entity<ApplicationUser>(entity =>
       {
         entity.ToTable(name: "User", schema: schema);
       });
