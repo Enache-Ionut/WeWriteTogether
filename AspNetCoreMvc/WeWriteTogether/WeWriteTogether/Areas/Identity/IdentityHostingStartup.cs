@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.DependencyInjection;
+using WeWriteTogether.Data;
 
 [assembly: HostingStartup(typeof(WeWriteTogether.Areas.Identity.IdentityHostingStartup))]
 namespace WeWriteTogether.Areas.Identity
@@ -12,6 +14,8 @@ namespace WeWriteTogether.Areas.Identity
       builder.ConfigureServices((context, services) =>
       {
         services.AddTransient<IEmailSender, EmailSender>();
+
+        services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
       });
     }
   }
