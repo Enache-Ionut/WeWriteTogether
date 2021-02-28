@@ -4,7 +4,10 @@
 
 @{
   var fullName = User.Identity.IsAuthenticated ?
-    User.Claims.First(c => c.Type == "FullName").Value : "";
+    User.Claims.First(c => c.Type == "FullName").Value : string.Empty;
+
+  if (fullName == null)
+    fullName = string.Empty;
 }
 
 <ul class="navbar-nav">

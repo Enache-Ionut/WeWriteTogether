@@ -16,6 +16,13 @@ namespace WeWriteTogether.Areas.Identity
         services.AddTransient<IEmailSender, EmailSender>();
 
         services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
+
+        services.AddAuthentication()
+          .AddGoogle(o =>
+          {
+            o.ClientId = context.Configuration["Google:ClientId"];
+            o.ClientSecret = context.Configuration["Google:ClientSecret"];
+          });
       });
     }
   }
